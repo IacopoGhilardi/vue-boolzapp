@@ -53,6 +53,10 @@ i {
   font-size: .8rem;
 }
 
+.profiles-header {
+  border-right: 1px solid #cfcfcf;;
+}
+
 .header-left {
   height: 100%;
   display: flex;
@@ -70,6 +74,7 @@ i {
   display: flex;
   align-items: center;
   font-size: 1.5rem;
+  
 }
 
 .header-right i {
@@ -120,6 +125,9 @@ i {
 
 
 /* contacts */
+.contacts {
+  height: calc(100% - 150px); 
+}
 /* search */
 .search {
   display: flex;
@@ -133,7 +141,7 @@ i {
   justify-content: center;
   align-items: center;
   height: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid #E9EBEB;
   border-right: none;
   cursor: pointer;
 }
@@ -146,6 +154,12 @@ i {
 }
 
 /* contact list */
+
+.contact-list {
+  height: calc(100% - 50px);
+  overflow-y: scroll;
+}
+
 .contact {
   display: flex;
   align-items: center;
@@ -218,6 +232,7 @@ i {
   padding: 30px;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
 }
 
 .messages div {
