@@ -42,7 +42,8 @@ i {
   background-color: white;
 }
 
-.profiles-header {
+.profiles-header,
+.chat-header {
   height: 70px;
   width: 100%;
   background-color: #EAEAEA;
@@ -145,33 +146,43 @@ i {
 }
 
 /* contact list */
-.contact-list ul li {
-  list-style: none;
+.contact {
   display: flex;
   align-items: center;
+  list-style: none;
   padding: 10px 20px;
   border-top: 1px solid #E9EBEB;
+  position: relative;
+  line-height: 20px;
 }
 
-.contact-list ul li img {
+.contact img {
   width: 60px;
   height: 60px;
   margin-right: 20px;
 }
 
-.contact-list ul li p {
+.contact p {
   align-self: flex-start;
   font-size: 1.3rem;
 }
 
-.contact-list ul li p span {
+.contact p span {
   font-size: .9rem;
   color: rgb(172, 172, 172);
 }
 
-.contact-list ul li:hover {
+.contact:hover {
   background-color: #E9EBEB;
   cursor: pointer;
+}
+
+.data {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: .8rem;
+  color:  rgb(172, 172, 172);
 }
 
 
@@ -179,7 +190,77 @@ i {
 .chat {
   width: 65%;
   height: 100%;
-  background-color: lightblue;
+}
+
+.chat-header > .header-left {
+  font-size: 1rem;
+}
+
+.chat-header > .header-left img {
+  margin-right: 20px;
+}
+
+.chat-header > .header-left p span {
+  color: grey;
+  font-size: .8rem;
+}
+
+
+.chat-box {
+  width: 100%;
+  height: calc(100% - 70px);
+}
+
+.messages {
+  height: calc(100% - 70px);
+  background-image: url(../img/whatsapp-background.png);
+  background-position: center;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.messages div {
+  padding: 20px 40px;
+  width: 350px;
+  border-radius: 10px;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.messages div .data {
+  top: calc(100% - 20px);
+}
+
+.sent {
+  background-color: #D5F9BA;
+  align-self: flex-end;
+}
+
+.recived {
+  background-color: white;
+}
+
+.chat-input {
+  height: 70px;
+  background-color: #F3EEEA;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.chat-input input {
+  width: 85%;
+  height: 45px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.chat-input i {
+  color: #6B7376;
+  font-size: 1.5rem;
 }
 
 
