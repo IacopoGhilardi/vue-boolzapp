@@ -29,7 +29,7 @@ i {
 }
 
 
-.container {
+#container {
   width: 80%;
   height: 90vh;
   display: flex;
@@ -241,6 +241,7 @@ i {
   border-radius: 10px;
   position: relative;
   margin-bottom: 10px;
+  overflow-wrap: break-word;
 }
 
 .messages div .data {
@@ -252,7 +253,7 @@ i {
   align-self: flex-end;
 }
 
-.recived {
+.received {
   background-color: white;
 }
 

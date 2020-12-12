@@ -18,7 +18,7 @@
 </head>
 <body>
 
-    <div class="container">
+    <div id="container">
 
             <!-- sezione profilo -->
             <div class="profiles">
@@ -26,7 +26,7 @@
                 <header class="profiles-header">
                     <div class="header-left">
                         <img src="img/deadpool.png" alt="">
-                        <h2>Nome Utente</h2>
+                        <h2>Deadpool</h2>
                     </div>
                     <div class="header-right">
                         <i class="fas fa-circle-notch"></i>
@@ -53,13 +53,13 @@
                     <!-- lista chat aperte -->
                     <div class="contact-list">
                         <ul>
-                            <li class="contact">
-                                <img src="img/Batman-icon.png" alt="">
+                            <li v-for="(contact, index) in contacts" class="contact" @click="changeContact(index)">
+                                <img :src="contact.avatar" alt="avatar">
                                 <p>
-                                    Michele <br>
-                                    <span>Tutto fatto!...</span>
+                                    {{contact.name}} <br>
+                                    <span>{{contact.messages[contact.messages.length - 1].text}}</span>
                                 </p>
-                                <span class="data">10/01/2020 16:15:22</span>
+                                <span class="data">{{contact.messages[contact.messages.length - 1].date}}</span>
                             </li>
                         </ul>
                     </div>
@@ -70,9 +70,9 @@
             <div class="chat">
                     <header class="chat-header">
                         <div class="header-left">
-                            <img src="img/deadpool.png" alt="profilo">
-                            <p>Nome Utente <br>
-                                <span>Ultimo accesso oggi alle</span>
+                            <img :src="contacts[contactIndex].avatar" alt="profilo">
+                            <p>{{contacts[contactIndex].name}} <br>
+                                <span>Ultimo accesso oggi alle {{contacts[contactIndex].messages[contacts[contactIndex].messages.length - 1].date}}</span>
                             </p>
                         </div>
                         <div class="header-right">
@@ -83,12 +83,10 @@
                     </header>
                     <div class="chat-box">
                         <div class="messages">
-                            <div class="sent">messaggio inviato
-                                <span class="data">10/01</span>
+                            <div :class="message.status" v-for="message in contacts[contactIndex].messages"> {{message.text}}
+                                <span class="data">{{contacts[contactIndex].messages[contacts[contactIndex].messages.length - 1].date}}</span>
                             </div>
-                            <div class="recived">massaggio ricevuto
-                                <span class="data">20/10</span>
-                            </div>
+
                         </div>
                         <div class="chat-input">
                             <i class="far fa-smile"></i>
