@@ -48,8 +48,8 @@
                 <!-- contatti -->
                 <div class="contacts">
                     <div class="search">
-                        <div><i class="fas fa-search"></i></div>
-                        <input type="text" placeholder="Cerca o inizia una nuova chat">
+                        <div><i @click="searchContact()" class="fas fa-search"></i></div>
+                        <input v-model="search" type="text" placeholder="Cerca o inizia una nuova chat">
                     </div>
 
                     <!-- lista chat aperte -->
@@ -86,7 +86,7 @@
                     <div class="chat-box">
                         <div class="messages">
                             <div :class="message.status" v-for="message in contacts[contactIndex].messages"> {{message.text}}
-                                <span class="data">{{contacts[contactIndex].messages[contacts[contactIndex].messages.length - 1].date}}</span>
+                                <span class="data">{{message.date}}</span>
                             </div>
 
                         </div>

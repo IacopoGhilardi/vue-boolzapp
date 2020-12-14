@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         el: '#container',
         data:{
 			userInput: "",
+			search: "",
             contactIndex: 0,
             contacts: [
             	{
@@ -110,26 +111,32 @@ document.addEventListener('DOMContentLoaded', () => {
             changeContact(index){
                 this.contactIndex = index;
 			},
+			// searchContact() {
+			// 	if (this.search != '') {
+			// 		const arr = this.contacts.filter( this.contacts.name == this.search );
+			// 		console.log(arr);
+			// 	}
+			// },
 			reciveMessage() {
 				setTimeout(() => {
-					
 					this.contacts[this.contactIndex].messages.push(
 						{
-							data: dayjs().format("DD-MM-YYYY HH:mm:ss"),
+							date: dayjs().format("DD-MM-YYYY HH:mm:ss"),
 							text: 'Ok',
 							status: 'received'
 						});
-						console.log(this.contacts[this.contactIndex].messages);
 				}, 1000);
 			},
 			sendMessage() {
-				this.contacts[this.contactIndex].messages.push(
-					{
-						data: dayjs().format("DD-MM-YYYY HH:mm:ss"),
-						text: this.userInput,
-						status: 'sent'
-					});
-				this.userInput = '';
+				if (this.userInput != ""){ 
+					this.contacts[this.contactIndex].messages.push(
+						{
+							date: dayjs().format("DD-MM-YYYY HH:mm:ss"),
+							text: this.userInput,
+							status: 'sent'
+						});
+					this.userInput = '';
+				}
 			}
         }
           
