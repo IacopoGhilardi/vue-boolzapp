@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
             	{
             		name: 'Uomo pipistrello',
             		avatar: 'img/batman-icon.png',
-            		visible: true,
+            		visible: false,
+                    isActive: "",
             		messages: [
             			{
             				date: '10/01/2020 15:30:55',
@@ -40,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             	{
             		name: 'Uomo con la tutina',
             		avatar: 'img/spiderman-avatar.webp',
-            		visible: true,
+            		visible: false,
             		messages: [
             			{
             				date: '20/03/2020 16:30:00',
@@ -62,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             	{
             		name: 'Armored boy',
             		avatar: 'img/ironman.webp',
-            		visible: true,
+            		visible: false,
             		messages: [
             			{
             				date: '28/03/2020 10:10:40',
@@ -84,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             	{
             		name: 'Me stesso',
             		avatar: 'img/deadpool.png',
-            		visible: true,
+            		visible: false,
             		messages: [
             			{
             				date: '10/01/2020 15:30:55',
@@ -93,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
             			},
             			{
             				date: '10/01/2020 15:50:00',
-            				text: 'Si, lo so',
+							text: 'Si, lo so',
             				status: 'received'
             			}
             		],
