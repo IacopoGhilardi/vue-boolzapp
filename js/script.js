@@ -7,6 +7,12 @@
 // Milestone 3
 // Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando “enter” il testo viene aggiunto al thread sopra, come messaggio verde
 // Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo.
+// Milestone 4
+// Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina)
+// Milestone 5 - opzionale
+// Cancella messaggio: cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
+// Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista dei contatti 
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -17,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         data:{
 			userInput: "",
 			search: "",
-            contactIndex: 0,
+			contactIndex: 0,
             contacts: [
             	{
             		name: 'Uomo pipistrello',
@@ -26,16 +32,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     isActive: "",
             		messages: [
             			{
+							visibility: "hidden",
             				date: '10/01/2020 15:30:55',
             				text: 'Sei uscito oggi?',
             				status: 'sent'
             			},
             			{
+							visibility: "hidden",
             				date: '10/01/2020 15:50:00',
             				text: 'Un po\' di luce ti farebbe bene',
             				status: 'sent'
             			},
             			{
+							visibility: "hidden",
             				date: '10/01/2020 16:15:22',
             				text: 'Sono Batman!',
             				status: 'received'
@@ -49,16 +58,19 @@ document.addEventListener('DOMContentLoaded', () => {
             		visible: false,
             		messages: [
             			{
+							visibility: "hidden",
             				date: '20/03/2020 16:30:00',
             				text: 'Ciao come stai?',
             				status: 'sent'
             			},
             			{
+							visibility: "hidden",
             				date: '20/03/2020 16:30:55',
             				text: 'Bene grazie! Stasera ci vediamo?',
             				status: 'received'
             			},
             			{
+							visibility: "hidden",
             				date: '20/03/2020 16:35:00',
             				text: 'Mi piacerebbe ma devo andare a fare la spesa.',
             				status: 'sent'
@@ -71,16 +83,19 @@ document.addEventListener('DOMContentLoaded', () => {
             		visible: false,
             		messages: [
             			{
+							visibility: "hidden",
             				date: '28/03/2020 10:10:40',
             				text: 'La Marianna va in campagna',
             				status: 'received'
             			},
             			{
+							visibility: "hidden",
             				date: '28/03/2020 10:20:10',
             				text: 'Sicuro di non aver sbagliato chat?',
             				status: 'sent'
             			},
             			{
+							visibility: "hidden",
             				date: '28/03/2020 16:15:22',
             				text: 'Ah scusa!',
             				status: 'received'
@@ -93,11 +108,13 @@ document.addEventListener('DOMContentLoaded', () => {
             		visible: false,
             		messages: [
             			{
+							visibility: "hidden",
             				date: '10/01/2020 15:30:55',
             				text: 'Sei il migliore di tutti',
             				status: 'sent'
             			},
             			{
+							visibility: "hidden",
             				date: '10/01/2020 15:50:00',
 							text: 'Si, lo so',
             				status: 'received'
@@ -107,20 +124,22 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
 
 		},
+		computed: {
+			filteredContacts() {
+				return this.contacts.filter(contact => {
+				  return contact.name.toLowerCase().includes(this.search.toLowerCase())
+				})
+			}
+		},
         methods: {
             changeContact(index){
-                this.contactIndex = index;
+				this.contactIndex = index;
 			},
-			// searchContact() {
-			// 	if (this.search != '') {
-			// 		const arr = this.contacts.filter( this.contacts.name == this.search );
-			// 		console.log(arr);
-			// 	}
-			// },
 			reciveMessage() {
 					setTimeout(() => {
 						this.contacts[this.contactIndex].messages.push(
 							{
+								visibility: "hidden",
 								date: dayjs().format("DD-MM-YYYY HH:mm:ss"),
 								text: 'Ok',
 								status: 'received'
@@ -131,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				if (this.userInput != ""){ 
 					this.contacts[this.contactIndex].messages.push(
 						{
+							visibility: "hidden",
 							date: dayjs().format("DD-MM-YYYY HH:mm:ss"),
 							text: this.userInput,
 							status: 'sent'
@@ -138,6 +158,15 @@ document.addEventListener('DOMContentLoaded', () => {
 					this.userInput = '';
 					this.reciveMessage();
 				}
+			},
+			toggleMessageMenu(message) {
+				message.visibility = message.visibility == "hidden" ? "show" : "hidden";
+			},
+			deleteMessage(index) {
+				Vue.delete(this.contacts[this.contactIndex].messages, index);
+			},
+			checkLengthMessages() {
+				return this.contacts[this.contactIndex].messages.length > 0;
 			}
         }
           

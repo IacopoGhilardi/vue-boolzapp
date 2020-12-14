@@ -28,6 +28,14 @@ i {
   cursor: pointer;
 }
 
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
 
 #container {
   width: 80%;
@@ -229,13 +237,13 @@ i {
 
 .chat-box {
   width: 100%;
-  height: calc(100% - 70px);
+  height: calc(100% - 140px);
+  background-image: url(../img/whatsapp-background.png);
+  background-position: center;
 }
 
 .messages {
-  height: calc(100% - 70px);
-  background-image: url(../img/whatsapp-background.png);
-  background-position: center;
+  height: 100%;
   padding: 30px;
   display: flex;
   flex-direction: column;
@@ -249,6 +257,36 @@ i {
   position: relative;
   margin-bottom: 10px;
   overflow-wrap: break-word;
+}
+
+#message-arrow {
+  position: absolute;
+  top: 10px;
+  right: 10px; 
+  opacity: 0;
+}
+
+.messages div:hover #message-arrow {
+  opacity: 1;
+}
+
+.message-menu {
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  width: 150px;
+  padding: 10px;
+  background: white;
+  white-space: nowrap;
+  z-index: 3;
+  box-shadow: 5px 10px 8px #888888;
+}
+
+.message-menu  li {
+  list-style: none;
+  font-size: .9rem;
+  padding: 8px;
+  cursor: pointer;
 }
 
 .messages div .data {
@@ -285,6 +323,8 @@ i {
   color: #6B7376;
   font-size: 1.5rem;
 }
+
+
 
 
 
