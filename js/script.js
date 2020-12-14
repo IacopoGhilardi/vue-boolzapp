@@ -118,14 +118,14 @@ document.addEventListener('DOMContentLoaded', () => {
 			// 	}
 			// },
 			reciveMessage() {
-				setTimeout(() => {
-					this.contacts[this.contactIndex].messages.push(
-						{
-							date: dayjs().format("DD-MM-YYYY HH:mm:ss"),
-							text: 'Ok',
-							status: 'received'
-						});
-				}, 1000);
+					setTimeout(() => {
+						this.contacts[this.contactIndex].messages.push(
+							{
+								date: dayjs().format("DD-MM-YYYY HH:mm:ss"),
+								text: 'Ok',
+								status: 'received'
+							});
+					}, 1000);
 			},
 			sendMessage() {
 				if (this.userInput != ""){ 
@@ -136,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
 							status: 'sent'
 						});
 					this.userInput = '';
+					this.reciveMessage();
 				}
 			}
         }

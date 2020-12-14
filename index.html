@@ -92,8 +92,8 @@
                         </div>
                         <div class="chat-input">
                             <i class="far fa-smile"></i>
-                            <input v-model="userInput" @keyup.enter="sendMessage(); reciveMessage();" type="text" placeholder="Scrivi un messaggio">
-                            <i @click="sendMessage(); reciveMessage();" class="fas" :class="userInput == '' ? 'fa-microphone' : 'fa-paper-plane'"></i>
+                            <input v-model="userInput" @keyup.enter="sendMessage()" type="text" placeholder="Scrivi un messaggio">
+                            <i @click="sendMessage()" class="fas" :class="userInput == '' ? 'fa-microphone' : 'fa-paper-plane'"></i>
                         </div>
                     </div>
             </div>
