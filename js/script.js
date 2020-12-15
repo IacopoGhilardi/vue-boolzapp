@@ -17,6 +17,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
 
+
     const app = new Vue({
 
         el: '#container',
@@ -129,6 +130,11 @@ document.addEventListener('DOMContentLoaded', () => {
 				return this.contacts.filter(contact => {
 				  return contact.name.toLowerCase().includes(this.search.toLowerCase())
 				})
+			},
+			filteredMessage() {
+				return this.contacts[contactIndex].messages.filter(message => {
+					return message.text.toLowerCase().includes(this.search.toLowerCase())
+				  })
 			}
 		},
         methods: {
@@ -159,7 +165,13 @@ document.addEventListener('DOMContentLoaded', () => {
 					this.reciveMessage();
 				}
 			},
-			toggleMessageMenu(message) {
+			toggleMessageMenu(message, index) {
+				let targetIndex = index;
+				this.contacts[this.contactIndex].messages.forEach((element, index) => {
+					if (index != targetIndex) {
+						element.visibility = "hidden";
+					}
+				});
 				message.visibility = message.visibility == "hidden" ? "show" : "hidden";
 			},
 			deleteMessage(index) {
@@ -170,6 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
         }
           
-    });
-
+	});
+	
 });

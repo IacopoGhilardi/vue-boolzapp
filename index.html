@@ -88,8 +88,8 @@
                         <div class="messages" v-if="checkLengthMessages">
                                 <div :class="message.status" v-for="(message, index) in contacts[contactIndex].messages"> {{message.text}}
                                     <span class="data">{{message.date}}</span>
-                                    <i @click="toggleMessageMenu(message)" class="fas fa-chevron-down" id="message-arrow"></i>
-                                        <ul :class="message.visibility" class="message-menu">
+                                    <i @click="toggleMessageMenu(message, index)" class="fas fa-chevron-down" id="message-arrow"></i>
+                                        <ul :class="message.visibility" class="message-menu" ref="dropdownMenu"> 
                                             <li>Message info</li>
                                             <li @click="deleteMessage(index)">Delete message</li>
                                         </ul>
